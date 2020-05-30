@@ -1,0 +1,19 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
+	amend = commit -a --amend
+	redate = commit -C HEAD --amend --date=\"now\"
+	remaster = rebase origin/master
+	ls = "!cur=$(git rev-parse --abbrev-ref HEAD); prev=$(git rev-parse --abbrev-ref @{-1}); git for-each-ref --sort=committerdate refs/heads/ --format=\"%(color:reset)  %(refname:short)|%(color:black bold)%(committerdate:relative)%(color:reset)\" | column -ts\"|\" | sed -e \"s,  ${cur} ,$(tput setaf 2)$(tput bold)* ${cur} ,\" | sed -e \"s,  ${prev} ,$(tput setaf 3)$(tput bold)  ${prev} ,\";"
+	purge = !git branch --merged master | grep -v \"\\* master\" | xargs -r -n 1 git branch -d
+	today = !git log --author=\"$(git config user.name)\" --since=midnight --first-parent
+	score = !git log --author=\"$(git config user.name)\" --since=midnight --first-parent | grep -c \"Merge:\" | xargs -I \"{}\" echo \"{}\" \"points\"
+	begin = "!f() { git fetch origin master; git checkout -b mdbarr/${1} origin/master; }; f"
+[user]
+	email = mark@hyperingenuity.com
+	name = Mark Barr
+[core]
+	editor = emacs -nw
