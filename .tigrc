@@ -1,0 +1,26 @@
+set vertical-split = false
+bind generic <Ctrl-b> scroll-page-up
+bind generic <Ctrl-f> scroll-page-down
+bind generic J next
+bind generic K previous
+color default color188 color235
+color cursor color108 color236
+color diff-add color174 default
+color diff-del color181 default
+color diff-chunk color35 default
+color pp-merge color180 default
+color pp-refs color115 default
+color date color115 default
+color author color180 default
+color mode color181 default
+color status default default
+color 'Author: ' color180 default
+color 'Commit: ' color180 default
+color 'AuthorDate: ' color180 default
+color 'CommitDate: ' color180 default
+color 'Date: ' color180 default
+color main-head color174 default
+color main-remote color223 default
+color main-ref color116 default
+bind generic Y !@sh -c ‘echo -n %(commit) | xclip -selection primary’
+
