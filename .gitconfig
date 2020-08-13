@@ -12,8 +12,11 @@
 	today = !git log --author=\"$(git config user.name)\" --since=midnight --first-parent
 	score = !git log --author=\"$(git config user.name)\" --since=midnight --first-parent | grep -c \"Merge:\" | xargs -I \"{}\" echo \"{}\" \"points\"
 	begin = "!f() { git fetch origin master; git checkout -b mdbarr/${1} origin/master; }; f"
+	up = "!git push origin master; git push --tags"
 [user]
 	email = mark@hyperingenuity.com
 	name = Mark Barr
 [core]
 	editor = emacs -nw
+[init]
+	defaultBranch = main
